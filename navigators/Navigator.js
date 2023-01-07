@@ -1,12 +1,9 @@
-import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../views/Home';
 import Profile from '../views/Profile';
 import Upload from '../views/Upload';
-import HomeIcon from '../components/HomeIcon';
-import UploadIcon from '../components/UploadIcon';
-import ProfileIcon from '../components/ProfileIcon';
+import LottieIcons from '../components/LottieIcons';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,15 +13,10 @@ const Navigator = () => {
       <Tab.Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
-            switch (route.name) {
-              case 'Home':
-                return <HomeIcon />;
-              case 'Profile':
-                return <ProfileIcon />;
-              case 'Upload':
-                return <UploadIcon />;
-            }
+            return <LottieIcons iconName={route.name} focused={focused} />;
           },
+          tabBarActiveTintColor: 'darkblue',
+          tabBarInactiveTintColor: 'gray',
         })}
       >
         <Tab.Screen name="Home" component={Home} />
