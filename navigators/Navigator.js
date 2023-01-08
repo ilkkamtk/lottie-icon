@@ -15,8 +15,6 @@ const Navigator = () => {
           tabBarIcon: ({focused, color, size}) => {
             return <LottieIcons iconName={route.name} focused={focused} />;
           },
-          tabBarActiveTintColor: 'darkblue',
-          tabBarInactiveTintColor: 'gray',
         })}
       >
         <Tab.Screen name="Home" component={Home} />

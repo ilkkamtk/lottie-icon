@@ -3,7 +3,6 @@ import HomeIcon from '../Lottie/Home.json';
 import ProfileIcon from '../Lottie/Profile.json';
 import UploadIcon from '../Lottie/Upload.json';
 import PropTypes from 'prop-types';
-import {useEffect, useRef} from 'react';
 
 const icons = {
   Home: HomeIcon,
@@ -12,21 +11,16 @@ const icons = {
 };
 
 const LottieIcons = ({iconName, focused}) => {
-  // console.log('Rendering LottieView for', iconName);
-  console.log(iconName, focused);
-  const animationRef = useRef();
-  useEffect(() => {
-    if (focused && animationRef.current) {
-      // console.log('Playing animation for', iconName);
-      animationRef.current?.play();
-    }
-  }, [focused, animationRef.current]);
   return (
     <LottieView
-      ref={animationRef}
+      ref={(animation) => {
+        if (animation && focused) {
+          animation.play();
+        }
+      }}
       source={icons[iconName]}
       loop={false}
-      autoPlay={true}
+      autoPlay={false}
     />
   );
 };
